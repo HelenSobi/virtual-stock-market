@@ -1,4 +1,3 @@
-import NavBar from "./components/Navbar"
 import Header from "./components/Header"
 
 function App() {
