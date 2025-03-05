@@ -5,7 +5,7 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-10">
+    <header className="bg-white shadow-md top-0 left-0 w-full z-10">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center space-x-2">
