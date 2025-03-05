@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FaBars, FaTimes,FaChartLine } from "react-icons/fa";
+import { FaBars, FaTimes, FaChartLine, FaTachometerAlt, FaChartBar, FaBriefcase } from "react-icons/fa";
+import WalletBalance from "./WalletBalance";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,16 +16,14 @@ function Header() {
 
         {/* Center: Desktop Menu */}
         <nav className="hidden md:flex space-x-6 text-lg font-Montserrat">
-          <a href="#" className=" text-gray-700 hover:text-blue-500">Home</a>
+          <a href="#" className="text-gray-700 hover:text-blue-500">Stocks</a>
           <a href="#" className="text-gray-700 hover:text-blue-500">Dashboard</a>
-          <a href="#" className="text-gray-700 hover:text-blue-500">Portfolio</a>
-          <a href="#" className="text-gray-700 hover:text-blue-500">News</a>
         </nav>
 
-        {/* Right: Sign In Button */}
-        <button className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-lg font-Montserrat">
-          Sign In
-        </button>
+        {/* Right: Wallet Balance */}
+        <div className="hidden md:block bg-blue-600 px-4 py-2 rounded-md text-white">
+          <WalletBalance />
+        </div>
 
         {/* Mobile Menu Icon */}
         <button className="md:hidden text-gray-700" onClick={() => setMenuOpen(!menuOpen)}>
@@ -33,17 +32,27 @@ function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <nav className="md:hidden bg-white shadow-md p-4 absolute top-full left-0 w-full text-lg font-Montserrat">
-          <a href="#" className="block py-2 text-gray-700 hover:text-blue-500">Home</a>
-          <a href="#" className="block py-2 text-gray-700 hover:text-blue-500">Markets</a>
-          <a href="#" className="block py-2 text-gray-700 hover:text-blue-500">Portfolio</a>
-          <a href="#" className="block py-2 text-gray-700 hover:text-blue-500">News</a>
-          <button className="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-            Sign In
-          </button>
-        </nav>
-      )}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity ${
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setMenuOpen(false)} // Close menu when clicking outside
+      ></div>
+
+      <nav
+        className={`fixed top-0 right-0 h-full w-full bg-white shadow-md p-6 text-lg font-Montserrat transform transition-transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } z-30`}
+      >
+        <button className="absolute top-4 right-4 text-gray-700" onClick={() => setMenuOpen(false)}>
+          <FaTimes size={24} />
+        </button>
+          <a href="#" className="text-gray-700 hover:text-blue-500">Stocks</a>
+          <a href="#" className="text-gray-700 hover:text-blue-500">Dashboard</a>
+          <div className="mt-4 bg-blue-600 px-4 py-2 rounded-md text-white">
+            <WalletBalance />
+          </div>
+      </nav>
     </header>
   );
 }
