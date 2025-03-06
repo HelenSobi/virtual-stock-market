@@ -4,7 +4,7 @@ const WalletBalance = () => {
   const balance = useSelector((state) => state.wallet.balance);
 
   return (
-      <p className="text-md"> Virtual Money :  ₹ {balance}</p>
+      <p className="text-md">Virtual Money : ₹{balance.toLocaleString()}</p>
   );
 };
 
