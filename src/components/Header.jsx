@@ -44,7 +44,7 @@ function Header() {
       ></div>
 
 <nav
-  className={`fixed top-0 right-0 h-full w-full bg-white shadow-md p-6 text-lg font-Montserrat transform transition-transform ${
+  className={`fixed top-0 right-0 h-full w-full bg-white shadow-md p-6 text-lg transform transition-transform ${
     menuOpen ? "translate-x-0" : "translate-x-full"
   } z-30 flex flex-col space-y-6`}
 >
@@ -53,15 +53,18 @@ function Header() {
   </button>
 
   <div className="mt-12 flex flex-col space-y-6 text-center">
-    <Link onClick={() => setIsOpen(!isOpen)} to="/" className="text-gray-800 hover:text-blue-500">
+    <Link onClick={() => setMenuOpen(!menuOpen)} to="/" className="text-gray-800 hover:text-blue-500">
       Home
     </Link>
-    <Link onClick={() => setIsOpen(!isOpen)} to="/stocks" className="text-gray-800 hover:text-blue-500">
+    <Link onClick={() => setMenuOpen(!menuOpen)} to="/stocks" className="text-gray-800 hover:text-blue-500">
       Stocks
     </Link>
-    <Link onClick={() => setIsOpen(!isOpen)} to="/dashboard" className="text-gray-800 hover:text-blue-500">
+    <Link onClick={() => setMenuOpen(!menuOpen)} to="/dashboard" className="text-gray-800 hover:text-blue-500">
       Dashboard
     </Link>
+    <div className=" bg-gray-100 px-4 py-2 rounded-md text-blue-500">
+              <WalletBalance />
+            </div>
   </div>
 </nav>
 
