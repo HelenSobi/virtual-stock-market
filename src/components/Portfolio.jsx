@@ -7,9 +7,17 @@ const Portfolio = () => {
 
   return (
     <div className="overflow-x-auto w-full">
+       {/* Balance Section */}
+       <div className="flex  gap-2 mb-4">
+          <p className="text-lg  text-blue-700"> Balance:</p>
+          <p className="text-lg font-bold text-blue-700">
+            ₹{balance.toFixed(2)}
+          </p>
+        </div>
         {Object.keys(portfolio).length === 0 ? (
           <p className="text-gray-500 text-center">You don’t own any stocks yet.</p>
         ) : (
+          
            <div className="overflow-x-auto w-full">
           <table className="w-full border-collapse border border-gray-300">
             <thead>
