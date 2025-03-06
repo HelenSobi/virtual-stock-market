@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { buyStock, sellStock } from "../store/slices/walletSlice";
 import { API_URL } from "../utils/constant";
 import BuySellMenu from "./BuySellMenu";
+import { FaEllipsisV } from "react-icons/fa";
 
 const StockList = () => {
   const [stocks, setStocks] = useState([]);
@@ -27,14 +28,12 @@ const StockList = () => {
 
   useEffect(() => {
     fetchStockData();
-    //const interval = setInterval(fetchStockData, 60000); // Auto-refresh every 1 min
-    //return () => clearInterval(interval);
+    const interval = setInterval(fetchStockData, 60000); // Auto-refresh every 1 min
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="min-h-screen">
-      <h1 className="p-4 text-2xl mb-6">Stocks</h1>
-
       {loading && <p className="text-blue-500 text-center">Fetching stock data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
 
@@ -48,26 +47,25 @@ const StockList = () => {
                 <button 
                   className="absolute top-2 right-3 text-gray-500 hover:text-gray-800" 
                   onClick={() => setActiveMenu(activeMenu === index ? null : index)}
-                >
-                  ⋮
+                ><FaEllipsisV/>
                 </button>
 
                 {/* Buy/Sell Menu */}
                 {activeMenu === index && (
-  <BuySellMenu
-    stock={stock}
-    onBuy={() => dispatch(buyStock({ stock: stock.Company_Name, price: stock.LTP }))}
-    onSell={() => dispatch(sellStock({ stock: stock.Company_Name, price: stock.LTP }))}
-    onClose={() => setActiveMenu(null)} // Close dropdown on action
-  />
-)}
+                  <BuySellMenu
+                    stock={stock}
+                    onBuy={() => dispatch(buyStock({ stock: stock.Company_Name, price: stock.LTP }))}
+                    onSell={() => dispatch(sellStock({ stock: stock.Company_Name, price: stock.LTP }))}
+                    onClose={() => setActiveMenu(null)} // Close dropdown on action
+                  />
+                )}
 
                 <h2 className="text-sm">{stock.Company_Name}</h2>
                 <p className="text-sm">₹{stock.LTP} {stock.currency}</p>
                 <p className={`text-xs ${isPositive ? "text-green-600" : "text-red-600"}`}>
                   {isPositive ? "▲" : "▼"} {stock.change} ({stock.Change_percent}%)
                 </p>
-                <p className="text-gray-400 text-xs">Last Traded: {new Date(stock.traded_time).toLocaleString()}</p>
+                <p className="text-gray-400 text-xs">Last Tradedd: {new Date(stock.traded_time).toLocaleString()}</p>
               </div>
             );
           })}

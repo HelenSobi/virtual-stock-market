@@ -1,5 +1,5 @@
-import StockList from "./StockList";
-import Portfolio from "./Portfolio";
+import StockList from "../components/StockList";
+import Portfolio from "../components/Portfolio";
 
 const Dashboard=()=>
 {

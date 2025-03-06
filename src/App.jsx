@@ -1,16 +1,21 @@
+import { Routes, Route } from "react-router"
 import Header from "./components/Header"
-import Home from "./components/Home"
-import Dashboard from "./components/Dashboard"
+import Home from "./pages/Home"
+import Stocks from "./pages/Stocks"
+import Dashboard from "./pages/Dashboard"
 
 function App() {
   
   return (
     <>
       <Header/>
-      <Home/>
-      {/* <Dashboard/> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/stocks" element={<Stocks/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </>
   )
 }
 
-export default App
+export default App;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { FaBars, FaTimes, FaChartLine, FaTachometerAlt, FaChartBar, FaBriefcase } from "react-icons/fa";
 import WalletBalance from "./WalletBalance";
 
@@ -10,14 +11,17 @@ function Header() {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center space-x-2">
-          <FaChartLine className="w-8 h-8 text-blue-600 stroke-[0.5]" />
-          <span className="text-2xl text-gray-700 font-Montserrat">TradeNova</span>
+          <Link to="/">
+            <FaChartLine className="w-8 h-8 text-blue-600 stroke-[0.5]" />
+            <span className="text-xl text-gray-700 font-Montserrat">TradeNova</span>
+          </Link>
         </div>
 
         {/* Center: Desktop Menu */}
         <nav className="hidden md:flex space-x-6 text-lg font-Montserrat">
-          <a href="#" className="text-gray-700 hover:text-blue-500">Stocks</a>
-          <a href="#" className="text-gray-700 hover:text-blue-500">Dashboard</a>
+          <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
+          <Link to="/stocks" className="text-gray-700 hover:text-blue-500">Stocks</Link>
+          <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">Dashboard</Link>
         </nav>
 
         {/* Right: Wallet Balance */}
