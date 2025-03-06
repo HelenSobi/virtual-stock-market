@@ -5,20 +5,24 @@ const Dashboard=()=>
 {
     return(
         <div>
-           
-            <div className="container">
-                {/* Stocks Table */}
-                <div className="bg-white p-4 rounded-lg shadow-lg">
-                <h2 className="text-xl font-semibold mb-4">Stock Market</h2>
+            <section className="py-6">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 className="text-lg font-semibold text-gray-800 relative pb-2">
+                Discover more stocks
+                    <span className="block w-12 h-1 bg-blue-500 mt-1"></span>
+                </h3>
                 <StocksTable/>
                 </div>
-
-                {/* Portfolio Section */}
-                <div className="bg-white p-4 rounded-lg shadow-lg">
-                <h2 className="text-xl font-semibold mb-4">Your Portfolio</h2>
-                <Portfolio />
+            </section>
+            <section className="py-6">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 className="text-lg font-semibold text-gray-800 relative pb-2">
+                Your Portfolio
+                    <span className="block w-12 h-1 bg-blue-500 mt-1"></span>
+                </h3>
+                <Portfolio/>
                 </div>
-            </div>
+            </section>  
         </div>
     )
 }

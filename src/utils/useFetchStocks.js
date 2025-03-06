@@ -18,7 +18,7 @@ const useFetchStocks = () => {
                 const data = await response.json();
                 //console.log("Fetched stock data:", data);
                 dispatch(addStocksList(data));
-                console.log("Dispatched stock data:", data);
+                //console.log("Dispatched stock data:", data);
                 setLoading(false);
             } catch (err) {
                 setError(err.message);

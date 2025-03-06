@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link} from "react-router";
-import { FaBars, FaTimes, FaChartLine, FaTachometerAlt, FaChartBar, FaBriefcase } from "react-icons/fa";
+import { FaBars, FaTimes, FaChartLine} from "react-icons/fa";
 import WalletBalance from "./WalletBalance";
 
 function Header() {
@@ -17,14 +17,15 @@ function Header() {
         </Link>
 
         {/* Center: Desktop Menu */}
-        <nav className="hidden md:flex space-x-6 text-lg font-Montserrat">
-          <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
-          <Link to="/stocks" className="text-gray-700 hover:text-blue-500">Stocks</Link>
-          <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">Dashboard</Link>
+        <nav className="hidden md:flex space-x-6 text-lg ">
+          
+          <Link to="/" className="text-gray-900 hover:text-blue-500">Home</Link>
+          <Link to="/stocks" className="text-gray-900 hover:text-blue-500">Stocks</Link>
+          <Link to="/dashboard" className="text-gray-900 hover:text-blue-500">Dashboard</Link>
         </nav>
 
         {/* Right: Wallet Balance */}
-         <div className="hidden md:block bg-gray-300 px-4 py-2 rounded-md text-gray-800">
+         <div className="hidden md:block bg-gray-100 px-4 py-2 rounded-md text-blue-500">
               <WalletBalance />
             </div>
 
@@ -42,18 +43,28 @@ function Header() {
         onClick={() => setMenuOpen(false)} // Close menu when clicking outside
       ></div>
 
-      <nav
-        className={`fixed top-0 right-0 h-full w-full bg-white shadow-md p-6 text-lg font-Montserrat transform transition-transform ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } z-30`}
-      >
-        <button className="absolute top-4 right-4 text-gray-700" onClick={() => setMenuOpen(false)}>
-          <FaTimes size={24} />
-        </button>
-          <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
-          <Link to="/stocks" className="text-gray-700 hover:text-blue-500">Stocks</Link>
-          <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">Dashboard</Link>
-      </nav>
+<nav
+  className={`fixed top-0 right-0 h-full w-full bg-white shadow-md p-6 text-lg font-Montserrat transform transition-transform ${
+    menuOpen ? "translate-x-0" : "translate-x-full"
+  } z-30 flex flex-col space-y-6`}
+>
+  <button className="absolute top-4 right-4 text-gray-700" onClick={() => setMenuOpen(false)}>
+    <FaTimes size={24} />
+  </button>
+
+  <div className="mt-12 flex flex-col space-y-6 text-center">
+    <Link onClick={() => setIsOpen(!isOpen)} to="/" className="text-gray-800 hover:text-blue-500">
+      Home
+    </Link>
+    <Link onClick={() => setIsOpen(!isOpen)} to="/stocks" className="text-gray-800 hover:text-blue-500">
+      Stocks
+    </Link>
+    <Link onClick={() => setIsOpen(!isOpen)} to="/dashboard" className="text-gray-800 hover:text-blue-500">
+      Dashboard
+    </Link>
+  </div>
+</nav>
+
     </header>
   );
 }
