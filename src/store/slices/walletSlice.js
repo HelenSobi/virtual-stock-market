@@ -22,7 +22,7 @@ const walletSlice = createSlice({
         state.portfolio[stock] = 1;
       }
 
-      state.transactions.push({ type: "BUY", stock, price, time: new Date().toISOString() });
+      state.transactions.push({ type: "BUY", stock, price});
     },
 
     sellStock: (state, action) => {
@@ -36,7 +36,7 @@ const walletSlice = createSlice({
         delete state.portfolio[stock]; // Remove stock if quantity is 0
       }
 
-      state.transactions.push({ type: "SELL", stock, price, time: new Date().toISOString() });
+      state.transactions.push({ type: "SELL", stock, price});
     },
   },
 });
